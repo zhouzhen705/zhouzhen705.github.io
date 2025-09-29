@@ -657,3 +657,8 @@ if ('serviceWorker' in navigator) {
 <script defer src="//img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js" crossorigin></script>
 <script>"use strict";Core.utils.onAllowCookieTracking(function () {const queryString = window.location.search;const urlParams = new URLSearchParams(queryString);const whiteList = ['gclid', 'fbclid', 'gdan_clid'];const belongToList = list => item => list.includes(item);const belongToWhiteList = belongToList(whiteList);Array.from(urlParams).forEach(param => {const [queryKey, queryResult] = param;if (!belongToWhiteList(queryKey)) return;localStorage.setItem(queryKey, queryResult);});});
 "use strict";Core.utils.onAllowCookieTracking(() => {if (!document.cookie.includes("x-visitor-id")) {!function (o, i, e = 60) {const t = new Date();t.setTime(t.getTime() + 864e5 * e);const n = `expires=${t.toUTCString()}`;document.cookie = `${o}=${i};${n};path=/`;}("x-visitor-id", crypto.randomUUID(), 60);}});</script></body></html>
+
+
+/*
+Vscode commit Test
+*/
