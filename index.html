@@ -1,376 +1,347 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>kimchow.blog — Markets · Systems · Minds</title>
-  <meta name="description" content="Exploring truth in markets, systems, and minds." />
-  <meta name="author" content="kimchow" />
-  <link rel="icon" href="/assets/favicon.ico" />
-  <meta property="og:title" content="kimchow.blog" />
-  <meta property="og:description" content="Exploring truth in markets, systems, and minds." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/og-cover.jpg" />
-  <meta name="theme-color" content="#08090a" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kim — Exploring truth in markets, systems, and minds</title>
+  <meta name="description" content="Exploring truth in markets, systems, and minds. Trading cognition, systems thinking, and minimalist notes." />
+  <meta name="color-scheme" content="dark" />
   <style>
-  /* ===== Premium Dark Theme (No external deps) ===== */
-  :root{
-    --bg:#08090a;           /* near-black */
-    --bg-elev:#0a0c10;      /* elevated background */
-    --card:#0d0f14;         /* card surface */
-    --card-2:#0a0c11;       /* inputs */
-    --text:#e6e7ea;         /* primary text */
-    --muted:#a0a6b0;        /* secondary text */
-    --line:rgba(255,255,255,.05); /* hairline */
-    --accent:#9b8cff;       /* soft violet */
-    --accent-2:#22d3ee;     /* cyan for gradients */
-    --radius:18px;          /* big rounding */
-    --shadow:0 20px 50px rgba(0,0,0,.55);
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0}
-  body{color:var(--text);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);}
-
-  /* Subtle luxury background */
-  .bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:
-      radial-gradient(800px 400px at 10% 10%, rgba(155,140,255,.10), transparent 60%),
-      radial-gradient(600px 300px at 90% 20%, rgba(34,211,238,.08), transparent 60%),
-      radial-gradient(700px 350px at 60% 90%, rgba(155,140,255,.06), transparent 60%),
-      linear-gradient(180deg, var(--bg), var(--bg-elev));}
-  .bg::after{content:"";position:absolute;inset:0;background:
-      linear-gradient(transparent,rgba(0,0,0,.06)),
-      repeating-linear-gradient(90deg, transparent 0 29px, rgba(255,255,255,.03) 29px 30px);
-      opacity:.35;mix-blend-mode:overlay}
-
-  a{color:var(--accent);text-decoration:none}
-  a:hover{filter:brightness(1.2)}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-
-  /* Header */
-  header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(8,9,10,.9), rgba(8,9,10,.6) 70%, rgba(8,9,10,0));backdrop-filter:saturate(150%) blur(8px)}
-  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line)}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand img{width:34px;height:34px;border-radius:12px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.4)}
-  .navlinks{display:flex;gap:18px;align-items:center}
-  .navlinks a{color:var(--muted)}
-  .navlinks a:hover{color:var(--text)}
-
-  /* Buttons */
-  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:14px;font-weight:700;letter-spacing:.2px}
-  .btn.primary{color:#0b0c0f}
-  .btn.primary::before{content:"";position:absolute;inset:-1px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));filter:saturate(130%);}
-  .btn.primary::after{content:"";position:absolute;inset:0;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));mix-blend-mode:screen;opacity:.06}
-  .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 10px 30px rgba(155,140,255,.25), 0 6px 16px rgba(34,211,238,.18)}
-  .btn.ghost{border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--text)}
-
-  /* Surfaces */
-  .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-  .p24{padding:26px}
-
-  /* Layout */
-  .hero{padding:82px 0 48px}
-  .grid{display:grid;gap:22px}
-  .hero .grid{grid-template-columns:1.18fr .82fr}
-  @media (max-width:900px){.hero .grid{grid-template-columns:1fr}}
-  .list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  @media (max-width:720px){.list{grid-template-columns:1fr}}
-  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media (max-width:900px){.cols{grid-template-columns:1fr}}
-
-  /* Type */
-  h1{font-size:46px;line-height:1.12;margin:0 0 12px;letter-spacing:-.01em}
-  h2{font-size:26px;margin:0 0 10px}
-  h3{margin:0 0 8px}
-  p{margin:0 0 12px;color:var(--muted)}
-  .tag{font-size:12px;color:#8b93a6;text-transform:uppercase;letter-spacing:.14em}
-  .muted{color:var(--muted);font-size:14px}
-
-  /* UI bits */
-  .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-  .pill{padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.02)}
-  .chips{display:flex;gap:10px;flex-wrap:wrap}
-  .chip{border:1px solid var(--line);padding:7px 12px;border-radius:999px;color:var(--muted);cursor:pointer;background:rgba(255,255,255,.02)}
-  .chip.active{background:linear-gradient(135deg, rgba(155,140,255,.22), rgba(34,211,238,.22));color:#eaf6ff;border-color:transparent}
-  .search{display:flex;gap:10px;align-items:center}
-  .input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card-2);color:var(--text)}
-
-  section{padding:40px 0}
-  .sec-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:14px}
-  footer{border-top:1px solid var(--line);padding:30px 0;margin-top:40px}
-
-  /* Badges */
-  .soon{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
-  .soon::before{content:"⏳"}
-
-  /* Utilities */
-  .row{display:flex;gap:12px;flex-wrap:wrap}
-  .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-</style>
+    :root{
+      --bg:#0A0A0A;
+      --card:#111214;
+      --muted:#9CA3AF;
+      --text:#E5E7EB;
+      --hi:#F5F5F5;
+      --line:#1F2937;
+      --accent:#8B5CF6; /* 低饱和紫，谨慎使用 */
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC","Hiragino Sans GB","Microsoft YaHei", Arial, "Noto Sans CJK SC", "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;background:var(--bg);color:var(--text);font:16px/1.6 var(--font);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    /* NAV */
+    header{
+      position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(120%) blur(8px); background:rgba(10,10,10,.6)
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
+      background:linear-gradient(135deg,#1F2937, #0B0B0B);border:1px solid #2A2F38; box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+      font-weight:700;color:var(--hi)
+    }
+    .nav a{opacity:.9}
+    .nav a:hover{opacity:1}
+    .menu{display:flex;gap:18px;align-items:center}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
+      background:linear-gradient(180deg,#121318,#0A0A0A);
+      padding:10px 14px;border-radius:12px;transition:.25s;box-shadow:var(--shadow);
+    }
+    .btn:hover{transform:translateY(-1px);border-color:#2a2f38}
+    .ghost{background:#0a0a0a;border-color:#2a2f38;box-shadow:none}
+    /* HERO */
+    .hero{padding:96px 0 64px;border-bottom:1px solid var(--line)}
+    .kicker{letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--muted)}
+    .title{font-size:46px;line-height:1.1;margin:16px 0 12px;font-weight:700}
+    .subtitle{color:var(--muted);max-width:680px}
+    .hero-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+    .chips{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:12px}
+    /* SECTIONS */
+    section{padding:64px 0;border-bottom:1px solid var(--line)}
+    h2{font-size:24px;margin:0 0 16px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{
+      grid-column:span 12;background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius); padding:20px;box-shadow:var(--shadow); position:relative;
+    }
+    .badge{
+      position:absolute;top:14px;right:14px;font-size:11px;color:var(--muted);
+      border:1px dashed #2c3440;border-radius:999px;padding:4px 8px;background:#0c0d11
+    }
+    .soon{opacity:.7}
+    .muted{color:var(--muted)}
+    .list{display:grid;gap:12px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
+    /* BLOG */
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+    .input{
+      background:#0a0a0a;border:1px solid var(--line);border-radius:12px;padding:10px 12px;
+      color:var(--text);min-width:220px;outline:none
+    }
+    .tag{padding:8px 12px;border:1px solid var(--line);border-radius:12px;color:var(--muted);cursor:pointer}
+    .tag.active{border-color:#3b3f47;color:var(--hi)}
+    .post{display:flex;flex-direction:column;gap:6px}
+    .post h3{margin:0;font-size:18px}
+    .aph{margin-top:6px;color:#bdbfc6;font-style:italic;font-size:13px}
+    /* RESOURCES */
+    .res{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .res .item{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+    .item h4{margin:0 0 6px;font-size:16px}
+    .item .note{color:var(--muted);font-size:14px}
+    .item .meta{margin-top:8px;font-size:12px;color:var(--muted)}
+    .rc{color:#D1D5DB}
+    .disclose{font-size:12px;color:#a1a1aa;margin-top:6px}
+    /* CONTACT */
+    form{display:grid;gap:10px}
+    textarea{min-height:120px;resize:vertical}
+    input, textarea{
+      background:#0a0a0a;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--text);outline:none
+    }
+    .ok{border-color:#334155}
+    /* FOOTER */
+    footer{padding:28px 0 60px}
+    .foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+    .links{display:flex;gap:14px;flex-wrap:wrap}
+    /* RESPONSIVE */
+    @media (min-width:700px){
+      .title{font-size:58px}
+      .card.split{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+      .grid-2>.card{grid-column:span 6}
+      .grid-3>.card{grid-column:span 4}
+      .res .item{grid-column:span 6}
+    }
+  </style>
 </head>
 <body>
-<div class="bg" aria-hidden="true"></div>
-<header>
-  <div class="wrap">
-    <nav aria-label="主导航">
+  <!-- NAV -->
+  <header>
+    <div class="wrap nav">
       <div class="brand">
-        <img src="/assets/avatar.jpg" alt="logo" />
-        <strong>kimchow.blog</strong>
+        <div class="logo">K</div>
+        <strong>Kim</strong>
       </div>
-      <div class="navlinks">
+      <nav class="menu">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#blog">Blog</a>
         <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
-        <a class="btn ghost" href="#subscribe">订阅</a>
-      </div>
-    </nav>
-  </div>
-</header>
-
-<main id="home" class="hero">
-  <div class="wrap grid">
-    <section class="card p24" aria-labelledby="brand-heading">
-      <h1 id="brand-heading">Exploring truth in markets, systems, and minds</h1>
-      <p> 市场结构 × 系统思维 × 交易心理 / 记录研究、实验与可复用的方法论 </p>
-      <div class="kpis" aria-label="栏目导航">
-        <a class="pill" href="#projects">Projects</a>
-        <a class="pill" href="#blog">Blog</a>
-        <a class="pill" href="#resources">Tools</a>
-        <a class="pill" href="#contact">Connect</a>
-      </div>
-      <div class="row" style="margin-top:16px">
-        <a class="btn primary" href="#subscribe">邮件订阅</a>
-        <a class="btn ghost" href="https://github.com/zhouzhen705" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </section>
-    <aside class="card p24" aria-labelledby="launch">
-      <h2 id="launch">预告 / 倒计时</h2>
-      <p class="muted">新版站点将于 <strong id="launchDateText">2025-11-01</strong> 上线。</p>
-      <div id="countdown" class="kpis"></div>
-      <hr style="border:0;border-top:1px solid var(--line);margin:16px 0" />
-      <h3 id="subscribe">订阅更新</h3>
-      <form id="subscribeForm" class="search" action="" method="post">
-        <label class="sr-only" for="email">Email</label>
-        <input id="email" class="input" name="email" type="email" required placeholder="你的邮箱" />
-        <button class="btn primary" type="submit">订阅</button>
-      </form>
-      <p class="muted">或者发邮件到：<a href="mailto:zhouzhen705@gmail.com">zhouzhen705@gmail.com</a></p>
-      <div class="row" style="margin-top:8px">
-        <a href="mailto:zhouzhen705@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a>
-        <a href="https://github.com/zhouzhen705" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </aside>
-  </div>
-</main>
-
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="tag">About</div>
-        <h2>关于我 <span class="soon">即将上线</span></h2>
-      </div>
-    </div>
-    <div class="card p24">
-      <p> 我是谁、在做什么、方法论与价值观 </p>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="tag">Projects</div>
-        <h2>项目经历 <span class="soon">即将上线</span></h2>
-      </div>
-    </div>
-    <div class="list">
-      <article class="card p24 item">
-        <h3>Signals Lab</h3>
-        <p>量化实验与交易模型沙盒，记录回测与实盘验证。</p>
-        <div class="chips"><span class="chip">Python</span><span class="chip">Backtest</span><span class="chip">Market Microstructure</span></div>
-      </article>
-      <article class="card p24 item">
-        <h3>Toolkit</h3>
-        <p>效率工具与可视化组件集合（浏览器脚本、Notion 模板等）。</p>
-        <div class="chips"><span class="chip">JS</span><span class="chip">Notion</span></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="blog">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="tag">Blog / Essays</div>
-        <h2>博客 / 观点输出</h2>
-        <p class="muted">分类：交易认知与策略 · 哲学 / 思想实验</p>
-      </div>
-      <div class="search" style="align-items:center">
-        <input id="blogSearch" class="input" placeholder="搜索文章、标签…" />
-      </div>
-    </div>
-    <div class="chips" id="blogTags" aria-label="标签过滤">
-      <button class="chip active" data-tag="all">全部</button>
-      <button class="chip" data-tag="trading">交易认知</button>
-      <button class="chip" data-tag="quant">量化实验</button>
-      <button class="chip" data-tag="psych">心理学</button>
-      <button class="chip" data-tag="philo">哲学</button>
-    </div>
-    <div class="list" id="blogList">
-      <article class="card p24 item" data-tags="trading psych">
-        <h3>风险与不确定性的可操作定义</h3>
-        <p>从赔率-胜率-样本外验证出发，讨论如何在不确定环境里制定规则 </p>
-      </article>
-      <article class="card p24 item" data-tags="quant trading">
-        <h3>微观结构与滑点：一个简易实验</h3>
-        <p>使用最小可复现的回测框架，观察撮合与流动性对执行的影响 </p>
-      </article>
-      <article class="card p24 item" data-tags="philo">
-        <h3>关于“真相”的三层模型</h3>
-        <p>存在论、认识论与语用主义之间的对话 </p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="resources">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="tag">Resources / Toolbox</div>
-        <h2>资源 / 工具箱</h2>
-        <p class="muted"> 我的工具箱 </p>
-      </div>
-    </div>
-    <div class="cols">
-      <div class="card p24">
-        <h3>书籍</h3>
-        <ul>
-          <li><strong>Trading in the Zone</strong> — 心理与纪律实践 </li>
-          <li><strong>Thinking in Systems</strong> — 系统思维入门 </li>
-        </ul>
-      </div>
-      <div class="card p24">
-        <h3>软件 / 工具</h3>
-        <ul>
-          <li><strong>Python + Jupyter</strong> — 研究与回测。</li>
-          <li><strong>Obsidian</strong> — 笔记与知识图谱。</li>
-        </ul>
-      </div>
-      <div class="card p24">
-        <h3>Prop Firm Referral</h3>
-        <p class="muted">以下链接可能包含推荐码，我可能从中获得收益；不会影响你价格。</p>
-        <ul>
-          <li><a href="#" rel="nofollow">Firm A（CODE: KC10）</a></li>
-          <li><a href="#" rel="nofollow">Firm B（CODE: KC15）</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="tag">Contact / Connect</div>
-        <h2>联系方式 / 社区</h2>
-      </div>
-    </div>
-    <div class="grid" style="grid-template-columns:1fr 1fr">
-      <form class="card p24" aria-label="联系表单" action="mailto:hello@kimchow.blog" method="post">
-        <h3>给我留言</h3>
-        <input class="input" name="name" placeholder="你的名字" required />
-        <input class="input" name="email" type="email" placeholder="你的邮箱" required />
-        <textarea class="input" name="message" rows="5" placeholder="想聊什么？"></textarea>
-        <div class="row"><button class="btn primary" type="submit">发送</button></div>
-        <p class="muted">或直接发邮件到 <a href="mailto:zhouzhen705@gmail.com">zhouzhen705@gmail.com</a></p>
-      </form>
-      <div class="card p24">
-        <h3>社交链接</h3>
-        <ul>
-          <li><a href="https://github.com/zhouzhen705" target="_blank" rel="noreferrer">GitHub</a></li>
-          <li><a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a></li>
-          <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-        </ul>
-        <h3 style="margin-top:12px">Newsletter</h3>
-        <p class="muted"> 敬请期待 </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="row" style="justify-content:space-between;align-items:center">
-      <nav class="row" aria-label="页脚快速导航">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#blog">Blog</a>
-        <a href="#resources">Resources</a>
-        <a href="#contact">Contact</a>
+        <a class="btn ghost" href="#subscribe" id="open-sub">Subscribe</a>
       </nav>
-      <small class="muted">© 2025 kimchow.blog · 保留所有权利</small>
     </div>
-  </div>
-</footer>
+  </header>
 
-<script>
-  // --- Countdown (optional) ---
-  const launchDate = new Date('2025-11-01T00:00:00Z');
-  const cd = document.getElementById('countdown');
-  const tick = () => {
-    const now = new Date();
-    const diff = launchDate - now;
-    if (diff <= 0) { cd.textContent = '已上线'; return; }
-    const d = Math.floor(diff/86400000);
-    const h = Math.floor((diff%86400000)/3600000);
-    const m = Math.floor((diff%3600000)/60000);
-    cd.innerHTML = `<span class="pill">${d} 天</span><span class="pill">${h} 小时</span><span class="pill">${m} 分钟</span>`;
-  };
-  tick(); setInterval(tick, 60000);
+  <!-- HERO -->
+  <main id="home" class="hero">
+    <div class="wrap">
+      <div class="kicker">Exploring truth in markets, systems, and minds</div>
+      <h1 class="title">把噪声削到最少，把洞察留到最后。</h1>
+      <p class="subtitle">我是 Kim，一名专注<strong>订单流 / 市场结构</strong>与<strong>系统化训练</strong>的创作者。这里记录我对交易、哲学与工具的长期探索。</p>
+      <div class="hero-cta">
+        <a class="btn" href="#blog">阅读最新文章</a>
+        <a class="btn ghost" href="#resources">查看工具箱</a>
+      </div>
+      <div class="chips">
+        <span class="chip">Projects</span>
+        <span class="chip">Blog</span>
+        <span class="chip">Tools</span>
+        <span class="chip">Thoughts</span>
+      </div>
+    </div>
+  </main>
 
-  // --- Newsletter stub (replace with Buttondown/ConvertKit) ---
-  document.getElementById('subscribeForm').addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const email = document.getElementById('email').value.trim();
-    if(!email) return;
-    alert('已记录：' + email + '\n\n集成说明：将 subscribeForm 的 action 指向你的邮件服务端点即可。');
-  });
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap grid">
+      <div class="card split soon">
+        <div>
+          <h2>关于我（About）</h2>
+          <p class="muted">（即将上线）以极简方式介绍你的背景：交易室、方法论、价值观与合作方向。</p>
+          <ul class="muted">
+            <li>职业定位：订单流 / 市场结构 / 训练体系</li>
+            <li>方法关键词：数据 > 直觉、纪律 > 情绪、结构化复盘</li>
+            <li>联系与合作：演讲、课程、研究合作</li>
+          </ul>
+        </div>
+        <div class="card" style="background:#0b0c0f;border:1px dashed #2c3440;">
+          <div class="badge">即将上线</div>
+          <p class="muted">放一张<strong>极简头像/Logo</strong>或一句话宣言：<span class="mono">“Facts over narratives.”</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // --- Blog tag filter & search ---
-  const list = document.getElementById('blogList');
-  const items = Array.from(list.querySelectorAll('.item'));
-  let activeTag = 'all';
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap grid">
+      <div class="card soon">
+        <div class="badge">Coming Soon</div>
+        <h2>项目经历（Projects / Portfolio）</h2>
+        <p class="muted">（即将上线）精选 3–6 个代表性项目：课程、研究、小工具或交易室方法学可视化。</p>
+      </div>
+    </div>
+  </section>
 
-  function applyFilter(){
-    const q = document.getElementById('blogSearch').value.toLowerCase();
-    items.forEach(it=>{
-      const tags = it.dataset.tags || '';
-      const text = it.innerText.toLowerCase();
-      const tagOk = activeTag==='all' || tags.includes(activeTag);
-      const qOk = !q || text.includes(q);
-      it.style.display = (tagOk && qOk) ? '' : 'none';
-    });
-  }
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="wrap">
+      <h2>博客 / 观点（Blog / Essays）</h2>
+      <div class="toolbar">
+        <input id="search" class="input" type="search" placeholder="搜索文章（市场结构 / 心理学 / 思想实验）" aria-label="搜索" />
+        <button class="tag active" data-tag="all">全部</button>
+        <button class="tag" data-tag="trading">交易认知与策略</button>
+        <button class="tag" data-tag="philo">哲学 / 思想实验</button>
+        <button class="tag" data-tag="notes">随想 Notes</button>
+      </div>
 
-  document.getElementById('blogTags').addEventListener('click', (e)=>{
-    if(e.target.matches('.chip')){
-      document.querySelectorAll('#blogTags .chip').forEach(c=>c.classList.remove('active'));
-      e.target.classList.add('active');
-      activeTag = e.target.dataset.tag;
-      applyFilter();
+      <div class="grid grid-3" id="posts">
+        <!-- 示例文章卡片（替换为你的内容） -->
+        <article class="card post" data-tags="trading">
+          <h3>用订单流重构「入场—退出—风险」的次序</h3>
+          <p class="muted">把感觉变成逻辑：从成交明细出发，先确认行为，再讨论形态。</p>
+          <div class="aph">“Discipline compounds; excitement decays.”</div>
+        </article>
+
+        <article class="card post" data-tags="philo">
+          <h3>叙事的权力：为什么我们更相信故事而不是事实</h3>
+          <p class="muted">人脑的省力机制与市场的叙事陷阱。</p>
+          <div class="aph">“Facts are expensive; stories are cheap.”</div>
+        </article>
+
+        <article class="card post" data-tags="notes">
+          <h3>工具即流程：我的复盘框架最小集</h3>
+          <p class="muted">三张表与一套记录法，避免陷入「勤奋而无效」。</p>
+          <div class="aph">“Write it down, or it didn’t happen.”</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="wrap">
+      <h2>资源 / 工具箱（Resources / Toolbox）</h2>
+      <p class="muted">像策展一样组织，不像广告。保持透明与实用。</p>
+      <div class="res">
+        <div class="item">
+          <h4>书籍 · 市场微观结构</h4>
+          <div class="note">从订单撮合到流动性供应者的行为模型，建立对「价格为何移动」的底层理解。</div>
+          <div class="meta">推荐理由：可操作的观察框架 · 非指标化 · 反直觉但有效</div>
+        </div>
+        <div class="item">
+          <h4>软件 · Footprint / DOM 工具</h4>
+          <div class="note">用于观察挂单、撤单、成交的微观行为，辅助制定入场与退出的节奏。</div>
+          <div class="meta">体验：低延迟 · 高信息密度 · 需训练</div>
+        </div>
+        <div class="item">
+          <h4>平台 · 数据源与回放</h4>
+          <div class="note">保障回测与复盘质量的基石：数据一致性 > 功能数量。</div>
+        </div>
+        <div class="item">
+          <h4>Prop Firm Referral</h4>
+          <div class="note">如需使用推荐码 <span class="rc mono">KIM-REF</span> 可获费用减免。</div>
+          <div class="disclose">披露：你通过该链接的购买，可能为我带来佣金；这不会额外增加你的成本。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap grid">
+      <div class="card">
+        <h2>联系 / 订阅（Contact / Connect）</h2>
+        <p class="muted">欢迎交流研究 / 课程合作。也可订阅邮件，获取新文章与工具更新。</p>
+        <form id="contact-form" action="#" method="post">
+          <input class="ok" type="email" name="email" placeholder="你的邮箱（必填）" required aria-label="邮箱" />
+          <textarea name="message" placeholder="留言（可选）" aria-label="留言"></textarea>
+          <button class="btn" type="submit">发送</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>社区与社交</h3>
+        <ul class="list muted">
+          <li>Email：<a href="mailto:hello@example.com">hello@example.com</a></li>
+          <li>LinkedIn / Twitter / GitHub：<span class="muted">放置极简链接或仅保留图标</span></li>
+          <li>可选：留言板 / 私人咨询入口</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="wrap">
+    <div class="foot">
+      <div class="links">
+        <a href="#home">Home</a>
+        <span>·</span>
+        <a href="#about">About</a>
+        <span>·</span>
+        <a href="#projects">Projects</a>
+        <span>·</span>
+        <a href="#blog">Blog</a>
+        <span>·</span>
+        <a href="#resources">Resources</a>
+        <span>·</span>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>© <span id="y"></span> Kim. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- SUBSCRIBE (轻量弹层) -->
+  <section id="subscribe" hidden>
+    <div class="wrap">
+      <div class="card" style="max-width:560px;margin:40px auto">
+        <h3>订阅更新</h3>
+        <p class="muted">不打扰，只在有价值的更新时发送。</p>
+        <form id="sub-form" action="#" method="post">
+          <input class="ok" type="email" required placeholder="你的邮箱（必填）" aria-label="邮箱" />
+          <button class="btn" type="submit">订阅</button>
+          <button class="btn ghost" type="button" id="close-sub">取消</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // 年份
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // 简易筛选 & 搜索
+    const tags = document.querySelectorAll('.tag');
+    const posts = [...document.querySelectorAll('#posts .post')];
+    const search = document.getElementById('search');
+
+    let activeTag = 'all';
+    function applyFilter(){
+      const q = (search.value||'').toLowerCase();
+      posts.forEach(p=>{
+        const inTag = activeTag==='all' || (p.dataset.tags||'').includes(activeTag);
+        const inSearch = !q || p.textContent.toLowerCase().includes(q);
+        p.style.display = (inTag && inSearch) ? '' : 'none';
+      });
     }
-  });
-  document.getElementById('blogSearch').addEventListener('input', applyFilter);
-</script>
+    tags.forEach(t=>{
+      t.addEventListener('click', ()=>{
+        tags.forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');
+        activeTag = t.dataset.tag;
+        applyFilter();
+      })
+    });
+    search.addEventListener('input', applyFilter);
+
+    // 订阅弹层
+    const sub = document.getElementById('subscribe');
+    document.getElementById('open-sub').addEventListener('click', (e)=>{ e.preventDefault(); sub.hidden=false; window.location.hash='subscribe';});
+    document.getElementById('close-sub').addEventListener('click', ()=>{ sub.hidden=true; history.pushState("", document.title, window.location.pathname + window.location.search); });
+
+    // 表单阻止默认提交（演示）
+    document.getElementById('contact-form').addEventListener('submit', (e)=>{ e.preventDefault(); alert('已收到，你可以在此接入表单服务或邮箱转发。'); });
+    document.getElementById('sub-form').addEventListener('submit', (e)=>{ e.preventDefault(); alert('订阅成功（演示）。'); sub.hidden=true; });
+  </script>
 </body>
 </html>
