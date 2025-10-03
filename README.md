@@ -1,4 +1,6 @@
 # zhouzhen705.github.io
-WEB
 
+Kims Personal Blog
+
+URL:
 https://kimchow.blog/
