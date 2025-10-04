@@ -83,3 +83,25 @@ async function loadPartial(id, file) {
 
 loadPartial('site-header', 'header.html');
 loadPartial('site-footer', 'footer.html');
+
+
+// 自动高亮当前导航项
+function highlightActiveNav() {
+  const current = window.location.pathname.split("/").pop() || "index.html";
+  const links = document.querySelectorAll("nav.menu a");
+
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (current === href || (current === "" && href === "index.html")) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
+
+// 延迟执行，等待 header 加载完成
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(highlightActiveNav, 100);
+});
+
