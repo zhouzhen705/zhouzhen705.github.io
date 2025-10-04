@@ -32,6 +32,14 @@ header{
 }
 .nav a{opacity:.9}
 .nav a:hover{opacity:1}
+/* 当前页面导航高亮 */
+.nav a.active {
+  color: var(--hi);
+  font-weight: 600;
+  opacity: 1;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+}
 .menu{display:flex;gap:18px;align-items:center}
 .btn{
   display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
