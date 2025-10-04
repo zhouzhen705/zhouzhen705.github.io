@@ -68,3 +68,18 @@ if (tagBtns.length) {
 }
 
 if (search) search.addEventListener('input', applyFilter);
+
+
+// 动态加载 Header 和 Footer
+async function loadPartial(id, file) {
+  try {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+  } catch (err) {
+    console.error(`加载 ${file} 失败：`, err);
+  }
+}
+
+loadPartial('site-header', 'header.html');
+loadPartial('site-footer', 'footer.html');
