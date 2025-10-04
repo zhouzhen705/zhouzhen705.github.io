@@ -313,43 +313,7 @@
     </div>
   </section>
 
-  <script>
-    // 年份
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // 简易筛选 & 搜索
-    const tags = document.querySelectorAll('.tag');
-    const posts = [...document.querySelectorAll('#posts .post')];
-    const search = document.getElementById('search');
-
-    let activeTag = 'all';
-    function applyFilter(){
-      const q = (search.value||'').toLowerCase();
-      posts.forEach(p=>{
-        const inTag = activeTag==='all' || (p.dataset.tags||'').includes(activeTag);
-        const inSearch = !q || p.textContent.toLowerCase().includes(q);
-        p.style.display = (inTag && inSearch) ? '' : 'none';
-      });
-    }
-    tags.forEach(t=>{
-      t.addEventListener('click', ()=>{
-        tags.forEach(x=>x.classList.remove('active'));
-        t.classList.add('active');
-        activeTag = t.dataset.tag;
-        applyFilter();
-      })
-    });
-    search.addEventListener('input', applyFilter);
-
-    // 订阅弹层
-    const sub = document.getElementById('subscribe');
-    document.getElementById('open-sub').addEventListener('click', (e)=>{ e.preventDefault(); sub.hidden=false; window.location.hash='subscribe';});
-    document.getElementById('close-sub').addEventListener('click', ()=>{ sub.hidden=true; history.pushState("", document.title, window.location.pathname + window.location.search); });
-
-    // 表单阻止默认提交（演示）
-    document.getElementById('contact-form').addEventListener('submit', (e)=>{ e.preventDefault(); alert('已收到，你可以在此接入表单服务或邮箱转发。'); });
-    document.getElementById('sub-form').addEventListener('submit', (e)=>{ e.preventDefault(); alert('订阅成功（演示）。'); sub.hidden=true; });
-  </script>
+  <script src="common.js"></script>
 </body>
 </html>
 
