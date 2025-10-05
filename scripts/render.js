@@ -1,4 +1,4 @@
-// 从 URL 读取参数 ?id=test
+// 从 URL 读取参数 ?id=test 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id") || "test"; // 默认加载 test.md
 const contentEl = document.getElementById("content");
