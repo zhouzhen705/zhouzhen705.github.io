@@ -110,3 +110,36 @@ footer{padding:28px 0 60px}
   .grid-3>.card{grid-column:span 4}
   .res .item{grid-column:span 6}
 }
+
+
+/* Markdown渲染美化 */
+#content h1, #content h2, #content h3 {
+  margin-top: 28px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+#content p, #content li {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+#content blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 16px 0;
+  padding-left: 12px;
+  color: #d1d5db;
+  font-style: italic;
+}
+
+#content ul, #content ol {
+  margin-left: 24px;
+  margin-bottom: 12px;
+}
+
+#content code {
+  background: #1f2937;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 14px;
+}
