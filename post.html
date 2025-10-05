@@ -3,21 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Blog Post — Kim</title>
+  <title>文章阅读 - Kim</title>
+  <meta name="description" content="文章详情页 — Trading cognition, systems thinking, and minimalist notes by Kim." />
   <meta name="color-scheme" content="dark" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header id="site-header"></header>
 
-  <main class="wrap" style="padding-top:80px;max-width:780px;">
-    <article id="content" class="card" style="padding:32px;"></article>
+  <main id="post-content" class="wrap" style="padding-top:80px; padding-bottom:80px;">
+    <div class="card">
+      <article id="content" class="markdown-body">
+        <h2>加载中...</h2>
+      </article>
+    </div>
   </main>
 
   <footer id="site-footer"></footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="common.js"></script>
-  <script src="scripts/render.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="scripts/post.js"></script>
 </body>
 </html>
