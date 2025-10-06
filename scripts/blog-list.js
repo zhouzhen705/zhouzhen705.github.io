@@ -1,34 +1,37 @@
-// scripts/blog-list.js
-console.log("✅ blog-list.js loaded");
+fetch('post/index.json')
+  .then(res => res.json())
+  .then(posts => {
+    const container = document.getElementById('posts');
+    const buttons = document.querySelectorAll('.tag');
 
-// 获取容器
-const container = document.getElementById("posts");
+    renderPosts(posts); // 初始渲染
 
-if (container) {
-  fetch("posts/index.json")
-    .then(res => {
-      if (!res.ok) throw new Error("无法加载 index.json");
-      return res.json();
-    })
-    .then(posts => {
-      if (!Array.isArray(posts) || posts.length === 0) {
-        container.innerHTML = "<p class='muted'>暂无文章。</p>";
-        return;
-      }
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-      posts.forEach(post => {
-        const el = document.createElement("article");
-        el.className = "card post";
-        el.innerHTML = `
+        const tag = btn.getAttribute('data-tag');
+        if (tag === 'all') {
+          renderPosts(posts);
+        } else {
+          const filtered = posts.filter(p => p.tag === tag);
+          renderPosts(filtered);
+        }
+      });
+    });
+
+    function renderPosts(list) {
+      container.innerHTML = '';
+      list.forEach(post => {
+        const card = document.createElement('article');
+        card.className = 'card post';
+        card.innerHTML = `
           <h3><a href="post.html?id=${post.id}">${post.title}</a></h3>
           <p class="muted">${post.desc}</p>
-          <div class="aph">${post.tag ? `标签：${post.tag}` : "点击阅读全文 →"}</div>
         `;
-        container.appendChild(el);
+        container.appendChild(card);
       });
-    })
-    .catch(err => {
-      console.error("❌ 加载文章列表失败:", err);
-      container.innerHTML = "<p class='muted'>无法加载文章列表，请检查 index.json 路径。</p>";
-    });
-}
+    }
+  })
+  .catch(err => console.error('加载文章列表失败:', err));
