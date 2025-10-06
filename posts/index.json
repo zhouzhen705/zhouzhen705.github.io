@@ -9,12 +9,24 @@
     "id": "2nd",
     "title": "心理状态的非线性动力学",
     "desc": "交易者的心理状态不是静态的...",
-    "tag": "philo"
+    "tag": "trading"
   },
   {
     "id": "3rd",
     "title": "认知偏差的递归效应",
     "desc": "认知偏差通过递归机制重塑交易者信念...",
+    "tag": "trading"
+  },
+  {
+    "id": "Tests",
+    "title": "敬请期待",
+    "desc": "敬请期待",
     "tag": "notes"
+  },
+  {
+    "id": "Tests",
+    "title": "敬请期待",
+    "desc": "敬请期待",
+    "tag": "philo"
   }
 ]
