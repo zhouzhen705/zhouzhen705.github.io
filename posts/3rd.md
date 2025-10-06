@@ -1,5 +1,5 @@
 # 《认知偏差的递归效应》  
-### *Knowledge Point III: The Recursive Effects of Cognitive Biases*
+### *The Recursive Effects of Cognitive Biases*
 
 ---
 
