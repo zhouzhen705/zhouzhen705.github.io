@@ -19,14 +19,14 @@
   },
   {
     "id": "tests",
-    "title": "敬请期待",
+    "title": "思想/哲学实验",
     "desc": "敬请期待",
-    "tag": "notes"
+    "tag": "philo"
   },
   {
     "id": "tests",
-    "title": "敬请期待",
+    "title": "随想",
     "desc": "敬请期待",
-    "tag": "philo"
+    "tag": "notes"
   }
 ]
