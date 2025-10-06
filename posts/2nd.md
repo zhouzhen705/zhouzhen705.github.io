@@ -1,5 +1,5 @@
 # 《心理状态的非线性动力学》  
-### *Knowledge Point II: The Nonlinear Dynamics of Psychological States*
+The Nonlinear Dynamics of Psychological States*
 
 ---
 
