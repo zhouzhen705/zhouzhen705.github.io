@@ -33,7 +33,7 @@
 > *reducing marginal returns and ultimately forcing traders either to innovate or to exit.*
 
 策略之间的竞争，不再是对错之争，  
-而是**适应度（fitness）**之争——  
+而是适应度（fitness）之争——  
 谁能更快感知环境变化，谁就能在演化中存活。  
 
 > *The competition among strategies is not about truth or falsehood,*  
