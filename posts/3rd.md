@@ -34,7 +34,7 @@
 > *even in the presence of contrary signals, traders may stubbornly preserve their initial hypotheses.*
 
 递归的危险在于，它会放大初始错误，  
-最终导致**系统性偏差（systemic bias）**的累积与爆发。  
+最终导致系统性偏差（systemic bias）的累积与爆发。  
 
 > *The danger of recursion lies in its ability to amplify initial errors,*  
 > *eventually resulting in the accumulation and eruption of systemic bias.*
@@ -43,7 +43,7 @@
 
 ## 三、打破偏差循环的外部机制  
 破解之道在于设计**外部校验机制（external verification mechanisms）**：  
-- **量化止损（quantitative stop-loss）**可作为硬性约束，切断偏差链条；  
+- 量化止损（quantitative stop-loss）可作为硬性约束，切断偏差链条；  
 - **第三方审计**或**系统化日志复盘（systematic trade journaling）**  
   则能打破自我强化的认知循环。  
 
