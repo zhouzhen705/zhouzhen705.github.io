@@ -1,5 +1,5 @@
 # 《市场微观结构的心理博弈》  
-### *Knowledge Point IV: The Psychological Game within Market Microstructure*
+### *The Psychological Game within Market Microstructure*
 
 ---
 
@@ -14,9 +14,7 @@
 ---
 
 ## 二、微观结构的隐形语言  
-在高频交易或大单执行的场景中，**市场微观结构（market microstructure）**——  
-如订单簿深度（order book depth）、买卖价差（bid–ask spread）、成交队列（execution queue）——  
-不仅承载着流动性，还折射出参与者的**集体预期与隐含意图**。  
+在高频交易或大单执行的场景中，**市场微观结构（market microstructure）**——  如订单簿深度（order book depth）、买卖价差（bid–ask spread）、成交队列（execution queue）——  不仅承载着流动性，还折射出参与者的**集体预期与隐含意图**。  
 
 > *In high-frequency trading or large-order execution, market microstructure—order book depth, bid-ask spreads, and execution queues—conveys not just liquidity but also the collective expectations and hidden intentions of participants.*
 
@@ -32,7 +30,7 @@
 ---
 
 ## 三、动态纳什均衡与多层思维  
-这一过程的本质，是**动态纳什均衡（dynamic Nash equilibrium）**的实时演绎：  
+这一过程的本质，是动态纳什均衡（dynamic Nash equilibrium）的实时演绎：  
 你的决策会影响对手的反应，而对手的反应又反过来塑造市场的瞬时结构。  
 交易行为由此成为一个递归系统——  
 每一层思考都被下一层预测所包裹。  
@@ -40,8 +38,7 @@
 > *This process is essentially an enactment of a dynamic Nash equilibrium:*  
 > *your decisions shape your opponents’ reactions, while their reactions recursively reshape the market state.*  
 
-因此，交易不仅需要**多层思维（second-order thinking）**——  
-预测他人对你的预测——  
+因此，交易不仅需要**多层思维（second-order thinking）**——  预测他人对你的预测
 还需要**策略性隐匿（strategic opacity）**，  
 在博弈中隐藏意图，避免被过早识破。  
 
