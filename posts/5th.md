@@ -1,5 +1,5 @@
 # 《交易系统的演化博弈》  
-### *Knowledge Point V: The Evolutionary Game of Trading Systems*
+### *The Evolutionary Game of Trading Systems*
 
 ---
 
