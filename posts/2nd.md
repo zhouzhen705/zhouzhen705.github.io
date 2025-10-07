@@ -31,7 +31,7 @@ The Nonlinear Dynamics of Psychological States*
 理解这一点，需要超越“控制情绪”的浅层建议，  
 转而研究**心理状态的相空间（phase space）**——  
 在不同情境下，哪些关键变量（如账户余额、波动率、杠杆率）  
-会推动系统的**混沌度上升（increase in chaos degree）**？  
+会推动系统的**混沌度上升（increase in chaos degree）**
 
 真正的情绪管理，不是压制，而是识别系统的临界点。  
 在这些点上，微小的扰动就可能触发心理跃迁，  
