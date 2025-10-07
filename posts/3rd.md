@@ -5,7 +5,7 @@
 
 ## 一、偏差的自我生成机制  
 在交易行为中，**认知偏差并非单点事件**，  
-而是通过**递归机制（recursive mechanisms）**不断重塑交易者的信念结构。  
+而是通过递归机制（recursive mechanisms）不断重塑交易者的信念结构。  
 
 > *In trading behavior, cognitive biases are not isolated events;*  
 > *they operate through recursive mechanisms that continuously reshape a trader’s belief structure.*
