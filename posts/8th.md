@@ -1,5 +1,5 @@
 # 《情绪的熵增与心理能量耗散》  
-### *Knowledge Point VIII: Emotional Entropy and the Dissipation of Psychological Energy*
+### *Emotional Entropy and the Dissipation of Psychological Energy*
 
 ---
 
